@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AuctionHouseAPI.Models;
+using MiNET.Utils;
 
 namespace AuctionHouseAPI.Controllers
 {
@@ -45,7 +46,7 @@ namespace AuctionHouseAPI.Controllers
         // PUT: api/Auctions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAuction(long id, Auction auction)
+        public async Task<IActionResult> PutAuction(UUID id, Auction auction)
         {
             if (id != auction.Id)
             {
@@ -100,7 +101,7 @@ namespace AuctionHouseAPI.Controllers
             return NoContent();
         }
 
-        private bool AuctionExists(long id)
+        private bool AuctionExists(UUID id)
         {
             return _context.Auctions.Any(e => e.Id == id);
         }
