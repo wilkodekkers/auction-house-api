@@ -1,13 +1,7 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AuctionHouseAPI.Models;
-using MiNET.Utils;
 
 namespace AuctionHouseAPI.Controllers
 {
@@ -31,7 +25,7 @@ namespace AuctionHouseAPI.Controllers
 
         // GET: api/Auctions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Auction>> GetAuction(long id)
+        public async Task<ActionResult<Auction>> GetAuction(Guid id)
         {
             var auction = await _context.Auctions.FindAsync(id);
 
@@ -46,7 +40,7 @@ namespace AuctionHouseAPI.Controllers
         // PUT: api/Auctions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAuction(UUID id, Auction auction)
+        public async Task<IActionResult> PutAuction(Guid id, Auction auction)
         {
             if (id != auction.Id)
             {
@@ -87,7 +81,7 @@ namespace AuctionHouseAPI.Controllers
 
         // DELETE: api/Auctions/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAuction(long id)
+        public async Task<IActionResult> DeleteAuction(Guid id)
         {
             var auction = await _context.Auctions.FindAsync(id);
             if (auction == null)
@@ -101,7 +95,7 @@ namespace AuctionHouseAPI.Controllers
             return NoContent();
         }
 
-        private bool AuctionExists(UUID id)
+        private bool AuctionExists(Guid id)
         {
             return _context.Auctions.Any(e => e.Id == id);
         }
