@@ -23,6 +23,21 @@ namespace AuctionHouseAPI.Controllers
             return await _context.Auctions.ToListAsync();
         }
 
+        // GET: api/Auctions/upcomming
+        [HttpGet("upcoming")]
+        public async Task<ActionResult<IEnumerable<Auction>>> GetUpcommingAuctions()
+        {
+            return await _context.Auctions.Where(auction => auction.StartTime > DateTime.Now).ToListAsync();
+        }
+
+        // GET: api/Auctions/active
+        [HttpGet("active")]
+        public async Task<ActionResult<IEnumerable<Auction>>> GetActiveAuctions()
+        {
+            return await _context.Auctions.Where(auction => auction.StartTime < DateTime.Now && auction.EndTime > DateTime.Now).ToListAsync();
+        }
+
+
         // GET: api/Auctions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Auction>> GetAuction(Guid id)
