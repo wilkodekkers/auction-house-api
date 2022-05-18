@@ -1,5 +1,4 @@
-﻿using FSharp.Data.Runtime.StructuralTypes;
-using System.Numerics;
+﻿using System.Numerics;
 
 namespace AuctionHouseAPI.Models
 {
@@ -15,7 +14,7 @@ namespace AuctionHouseAPI.Models
         public BigInteger CostsPerYear { get; set; }
         public decimal Investment { get; set; }
         public int FillingLineType { get; set; }
-        public Bit CupsFillingLine { get; set; }
+        public bool CupsFillingLine { get; set; }
         public decimal BootLoss { get; set; }
         public decimal KwhPerWorkingHour { get; set; }
         public decimal KgCo2EmissionCleaning { get; set; }

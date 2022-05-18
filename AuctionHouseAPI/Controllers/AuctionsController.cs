@@ -9,18 +9,11 @@ namespace AuctionHouseAPI.Controllers
     [ApiController]
     public class AuctionsController : ControllerBase
     {
-        private readonly AuctionContext _context;
+        private readonly ApplicationContext _context;
 
-        public AuctionsController(AuctionContext context)
+        public AuctionsController(ApplicationContext context)
         {
             _context = context;
-        }
-
-        // GET: api/Auctions
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Auction>>> GetAuctions()
-        {
-            return await _context.Auctions.ToListAsync();
         }
 
         // GET: api/Auctions/upcomming
@@ -34,7 +27,9 @@ namespace AuctionHouseAPI.Controllers
         [HttpGet("active")]
         public async Task<ActionResult<IEnumerable<Auction>>> GetActiveAuctions()
         {
-            return await _context.Auctions.Where(auction => auction.StartTime < DateTime.Now && auction.EndTime > DateTime.Now).ToListAsync();
+            return await _context.Auctions
+                .Where(auction => auction.StartTime < DateTime.Now && auction.EndTime > DateTime.Now)
+                .ToListAsync();
         }
 
 
