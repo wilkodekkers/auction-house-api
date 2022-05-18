@@ -20,5 +20,7 @@ namespace AuctionHouseAPI.Models
         public decimal KwhPerWorkingHour { get; set; }
         public decimal KgCo2EmissionCleaning { get; set; }
         public decimal LitreJuiceLossCleaning { get; set; }
+
+        public Guid AuctionId { get; set; }
     }
 }
