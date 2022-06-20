@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionHouseAPI", "AuctionHouseAPI\AuctionHouseAPI.csproj", "{A87F494A-C782-414A-8966-8C6E9C224917}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionHouseAPI.Test", "AuctionHouseAPI.Test\AuctionHouseAPI.Test.csproj", "{64D29956-3450-45BF-B464-E130A8FAE1FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A87F494A-C782-414A-8966-8C6E9C224917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A87F494A-C782-414A-8966-8C6E9C224917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A87F494A-C782-414A-8966-8C6E9C224917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D29956-3450-45BF-B464-E130A8FAE1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D29956-3450-45BF-B464-E130A8FAE1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D29956-3450-45BF-B464-E130A8FAE1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D29956-3450-45BF-B464-E130A8FAE1FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

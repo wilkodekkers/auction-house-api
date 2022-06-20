@@ -16,9 +16,9 @@ namespace AuctionHouseAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Auctions/upcomming
+        // GET: api/Auctions/upcoming
         [HttpGet("upcoming")]
-        public async Task<ActionResult<IEnumerable<Auction>>> GetUpcommingAuctions()
+        public async Task<ActionResult<IEnumerable<Auction>>> GetUpcomingAuctions()
         {
             return await _context.Auctions.Where(auction => auction.StartTime > DateTime.Now).ToListAsync();
         }
