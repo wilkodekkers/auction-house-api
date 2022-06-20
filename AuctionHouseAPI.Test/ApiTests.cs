@@ -2,6 +2,7 @@ using System.Net.Http.Json;
 using System.Text;
 using AuctionHouseAPI.Models;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Newtonsoft.Json;
 
 namespace AuctionHouseAPI.Test;
 
@@ -46,13 +47,23 @@ public class ApiTests
     [TestMethod]
     public async Task GetAuction_ReturnsJson()
     {
+        var Model = new Auction
+        {
+            Auctiontype = AuctionType.Anynomous_Auction,
+            BottlingLine = null,
+            EndTime = DateTime.Now.AddDays(1),
+            StartTime = DateTime.Now,
+            Id = Guid.NewGuid(),
+            Teams = null
+        };
+        var JsonString = JsonConvert.SerializeObject(Model);
         await _httpClient.PostAsync(
             requestUri: "api/auctionhouse/Auctions", 
-            content: new StringContent("{\"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"startTime\": \"2022-06-20T15:18:26.529Z\", \"endTime\": \"2022-06-20T15:18:26.529Z\", \"auctiontype\": 0}", Encoding.UTF8, "application/json"));
+            content: new StringContent(JsonString, Encoding.UTF8, "application/json"));
         
         var Response = await _httpClient.GetAsync("api/auctionhouse/Auctions/3fa85f64-5717-4562-b3fc-2c963f66afa6");
         var StringResult = await Response.Content.ReadAsStringAsync();
 
-        Assert.IsFalse(StringResult.Contains("\"id:\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\""));
+        Assert.IsFalse(StringResult.Equals(JsonString));
     }
 }
